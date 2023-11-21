@@ -1,2 +1,2 @@
-# BiddngProgramm
-Place bidds against the pc.
+# AuctionProgram
+Place bids against the pc.
