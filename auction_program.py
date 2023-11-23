@@ -1,17 +1,14 @@
-import art
+from art import logo
 import random
 import name_list
 
 bid_user_information = []
 
-print(art.logo)
-print("Welcome to the secret auction game.\n")
+def user_bid():
+    your_name = input("What is your name?: ")
+    your_bid = int(input("What's your bid?: "))
 
-def user_input():
-    name = input("What is your name?: ")
-    bid = int(input("What's your bid?: "))
-
-    bid_user_information.append({"name": name, "bid": bid})
+    bid_user_information.append({"name": your_name, "bid": your_bid})
 
 def computer_bid():
     computer_name = random.choice(name_list.name)
@@ -19,19 +16,30 @@ def computer_bid():
 
     bid_user_information.append({"name": computer_name, "bid": computer_bid_amount})
 
-user_bid_number = input("Are there more bidders? Type 'Yes' or 'No'\n")
-if user_bid_number.lower() == 'yes':
+def guess_number():
     user_number = int(input("How many guests?: "))
-    for _ in range(user_number):
-        computer_bid()
-    print("Other guests have made a bid.")
-elif user_bid_number.lower() == 'no':
-    dictio_empty = len(bid_user_information) == 0
-    if dictio_empty:
-        print("There aren't any current bets; please place a bet or accept guesses.")
-        user_input()
-    else:  
-        print("The betting will close.")
+    for num in range(user_number):
+       computer_bid()
+
+def guests():
+    while len(bid_user_information) == 1:
+        if user_bid_number == 'no':
+            number_user =int(input("There aren't any current bets from other guests.\n Please chose 1 to make another bet or  2 to have other guesst invited."))
+            if number_user == 1:
+               user_bid()
+            else:
+                guess_number()
+        else:
+            guess_number()
+
+print(logo)                  
+print("Welcome to the secret auction game.\n")
+
+user_bid()
+
+user_bid_number = input("Are there more bidders? Type 'Yes' or 'No'\n")
+
+guests()
 
 max_bid = 0
 winner = ""
