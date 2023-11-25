@@ -1,4 +1,4 @@
-from art import logo
+import art
 import random
 import name_list
 
@@ -31,8 +31,7 @@ def guests():
                 guess_number()
         else:
             guess_number()
-
-print(logo)                  
+                        
 print("Welcome to the secret auction game.\n")
 
 user_bid()
